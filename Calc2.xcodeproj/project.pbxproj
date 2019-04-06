@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E0008F02258B39600D9ED4E /* KeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0008EF2258B39600D9ED4E /* KeyCell.swift */; };
 		9E9A9D152258967C00C5C877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9A9D142258967C00C5C877 /* AppDelegate.swift */; };
-		9E9A9D172258967C00C5C877 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9A9D162258967C00C5C877 /* ViewController.swift */; };
-		9E9A9D1A2258967C00C5C877 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9A9D182258967C00C5C877 /* Main.storyboard */; };
 		9E9A9D1C2258967D00C5C877 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E9A9D1B2258967D00C5C877 /* Assets.xcassets */; };
 		9E9A9D1F2258967D00C5C877 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9A9D1D2258967D00C5C877 /* LaunchScreen.storyboard */; };
 		9E9A9D2A2258967D00C5C877 /* Calc2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9A9D292258967D00C5C877 /* Calc2Tests.swift */; };
-		9E9A9D352258967D00C5C877 /* Calc2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9A9D342258967D00C5C877 /* Calc2UITests.swift */; };
+		9ECEFF9C2258ACED006AC901 /* KeyCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECEFF9B2258ACED006AC901 /* KeyCellData.swift */; };
+		9ECEFF9E2258ADB4006AC901 /* CalcViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECEFF9D2258ADB4006AC901 /* CalcViewModel.swift */; };
+		9EFA637622589ACD0020DF41 /* CalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFA637522589ACD0020DF41 /* CalcViewController.swift */; };
+		9EFA637922589C680020DF41 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFA637822589C680020DF41 /* String+Extension.swift */; };
+		9EFA637B22589CBD0020DF41 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9EFA637A22589CBD0020DF41 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,29 +27,23 @@
 			remoteGlobalIDString = 9E9A9D102258967C00C5C877;
 			remoteInfo = Calc2;
 		};
-		9E9A9D312258967D00C5C877 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9E9A9D092258967B00C5C877 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9E9A9D102258967C00C5C877;
-			remoteInfo = Calc2;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E0008EF2258B39600D9ED4E /* KeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCell.swift; sourceTree = "<group>"; };
 		9E9A9D112258967C00C5C877 /* Calc2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calc2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E9A9D142258967C00C5C877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9E9A9D162258967C00C5C877 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9E9A9D192258967C00C5C877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9E9A9D1B2258967D00C5C877 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E9A9D1E2258967D00C5C877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E9A9D202258967D00C5C877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E9A9D252258967D00C5C877 /* Calc2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calc2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E9A9D292258967D00C5C877 /* Calc2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calc2Tests.swift; sourceTree = "<group>"; };
 		9E9A9D2B2258967D00C5C877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E9A9D302258967D00C5C877 /* Calc2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calc2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9E9A9D342258967D00C5C877 /* Calc2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calc2UITests.swift; sourceTree = "<group>"; };
-		9E9A9D362258967D00C5C877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9ECEFF9B2258ACED006AC901 /* KeyCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCellData.swift; sourceTree = "<group>"; };
+		9ECEFF9D2258ADB4006AC901 /* CalcViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcViewModel.swift; sourceTree = "<group>"; };
+		9EFA637522589ACD0020DF41 /* CalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcViewController.swift; sourceTree = "<group>"; };
+		9EFA637822589C680020DF41 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		9EFA637A22589CBD0020DF41 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,22 +61,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E9A9D2D2258967D00C5C877 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E0008EE2258B38700D9ED4E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9E0008EF2258B39600D9ED4E /* KeyCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		9E9A9D082258967B00C5C877 = {
 			isa = PBXGroup;
 			children = (
 				9E9A9D132258967C00C5C877 /* Calc2 */,
 				9E9A9D282258967D00C5C877 /* Calc2Tests */,
-				9E9A9D332258967D00C5C877 /* Calc2UITests */,
 				9E9A9D122258967C00C5C877 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,7 +86,6 @@
 			children = (
 				9E9A9D112258967C00C5C877 /* Calc2.app */,
 				9E9A9D252258967D00C5C877 /* Calc2Tests.xctest */,
-				9E9A9D302258967D00C5C877 /* Calc2UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,12 +93,13 @@
 		9E9A9D132258967C00C5C877 /* Calc2 */ = {
 			isa = PBXGroup;
 			children = (
+				9EFA637722589C530020DF41 /* Extensions */,
+				9EFA637022589A680020DF41 /* Main */,
 				9E9A9D142258967C00C5C877 /* AppDelegate.swift */,
-				9E9A9D162258967C00C5C877 /* ViewController.swift */,
-				9E9A9D182258967C00C5C877 /* Main.storyboard */,
 				9E9A9D1B2258967D00C5C877 /* Assets.xcassets */,
 				9E9A9D1D2258967D00C5C877 /* LaunchScreen.storyboard */,
 				9E9A9D202258967D00C5C877 /* Info.plist */,
+				9EFA637A22589CBD0020DF41 /* Localizable.strings */,
 			);
 			path = Calc2;
 			sourceTree = "<group>";
@@ -116,13 +113,55 @@
 			path = Calc2Tests;
 			sourceTree = "<group>";
 		};
-		9E9A9D332258967D00C5C877 /* Calc2UITests */ = {
+		9EFA637022589A680020DF41 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				9E9A9D342258967D00C5C877 /* Calc2UITests.swift */,
-				9E9A9D362258967D00C5C877 /* Info.plist */,
+				9EFA637322589A860020DF41 /* Model */,
+				9EFA637222589A7E0020DF41 /* View */,
+				9EFA637122589A730020DF41 /* ViewModel */,
 			);
-			path = Calc2UITests;
+			path = Main;
+			sourceTree = "<group>";
+		};
+		9EFA637122589A730020DF41 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9ECEFF9D2258ADB4006AC901 /* CalcViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9EFA637222589A7E0020DF41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9E0008EE2258B38700D9ED4E /* Cells */,
+				9EFA637422589A8C0020DF41 /* Controllers */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9EFA637322589A860020DF41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9ECEFF9B2258ACED006AC901 /* KeyCellData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9EFA637422589A8C0020DF41 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9EFA637522589ACD0020DF41 /* CalcViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9EFA637722589C530020DF41 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9EFA637822589C680020DF41 /* String+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,31 +202,13 @@
 			productReference = 9E9A9D252258967D00C5C877 /* Calc2Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9E9A9D2F2258967D00C5C877 /* Calc2UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9E9A9D3F2258967D00C5C877 /* Build configuration list for PBXNativeTarget "Calc2UITests" */;
-			buildPhases = (
-				9E9A9D2C2258967D00C5C877 /* Sources */,
-				9E9A9D2D2258967D00C5C877 /* Frameworks */,
-				9E9A9D2E2258967D00C5C877 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9E9A9D322258967D00C5C877 /* PBXTargetDependency */,
-			);
-			name = Calc2UITests;
-			productName = Calc2UITests;
-			productReference = 9E9A9D302258967D00C5C877 /* Calc2UITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		9E9A9D092258967B00C5C877 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Jakub Kurgan";
 				TargetAttributes = {
@@ -195,10 +216,6 @@
 						CreatedOnToolsVersion = 10.2;
 					};
 					9E9A9D242258967D00C5C877 = {
-						CreatedOnToolsVersion = 10.2;
-						TestTargetID = 9E9A9D102258967C00C5C877;
-					};
-					9E9A9D2F2258967D00C5C877 = {
 						CreatedOnToolsVersion = 10.2;
 						TestTargetID = 9E9A9D102258967C00C5C877;
 					};
@@ -219,7 +236,6 @@
 			targets = (
 				9E9A9D102258967C00C5C877 /* Calc2 */,
 				9E9A9D242258967D00C5C877 /* Calc2Tests */,
-				9E9A9D2F2258967D00C5C877 /* Calc2UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -230,19 +246,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E9A9D1F2258967D00C5C877 /* LaunchScreen.storyboard in Resources */,
+				9EFA637B22589CBD0020DF41 /* Localizable.strings in Resources */,
 				9E9A9D1C2258967D00C5C877 /* Assets.xcassets in Resources */,
-				9E9A9D1A2258967C00C5C877 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		9E9A9D232258967D00C5C877 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9E9A9D2E2258967D00C5C877 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,8 +265,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E9A9D172258967C00C5C877 /* ViewController.swift in Sources */,
 				9E9A9D152258967C00C5C877 /* AppDelegate.swift in Sources */,
+				9ECEFF9E2258ADB4006AC901 /* CalcViewModel.swift in Sources */,
+				9EFA637922589C680020DF41 /* String+Extension.swift in Sources */,
+				9E0008F02258B39600D9ED4E /* KeyCell.swift in Sources */,
+				9EFA637622589ACD0020DF41 /* CalcViewController.swift in Sources */,
+				9ECEFF9C2258ACED006AC901 /* KeyCellData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,14 +282,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E9A9D2C2258967D00C5C877 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9E9A9D352258967D00C5C877 /* Calc2UITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -285,22 +290,9 @@
 			target = 9E9A9D102258967C00C5C877 /* Calc2 */;
 			targetProxy = 9E9A9D262258967D00C5C877 /* PBXContainerItemProxy */;
 		};
-		9E9A9D322258967D00C5C877 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9E9A9D102258967C00C5C877 /* Calc2 */;
-			targetProxy = 9E9A9D312258967D00C5C877 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9E9A9D182258967C00C5C877 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9E9A9D192258967C00C5C877 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9E9A9D1D2258967D00C5C877 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -435,13 +427,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 83R8684L4T;
 				INFOPLIST_FILE = Calc2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jakub.kurgan.calc2.Calc2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -453,13 +446,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 83R8684L4T;
 				INFOPLIST_FILE = Calc2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jakub.kurgan.calc2.Calc2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -479,7 +473,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jakub.kurgan.calc2.Calc2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calc2.app/Calc2";
 			};
@@ -500,49 +494,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jakub.kurgan.calc2.Calc2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calc2.app/Calc2";
-			};
-			name = Release;
-		};
-		9E9A9D402258967D00C5C877 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 83R8684L4T;
-				INFOPLIST_FILE = Calc2UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = jakub.kurgan.calc2.Calc2UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Calc2;
-			};
-			name = Debug;
-		};
-		9E9A9D412258967D00C5C877 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 83R8684L4T;
-				INFOPLIST_FILE = Calc2UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = jakub.kurgan.calc2.Calc2UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Calc2;
 			};
 			name = Release;
 		};
@@ -572,15 +526,6 @@
 			buildConfigurations = (
 				9E9A9D3D2258967D00C5C877 /* Debug */,
 				9E9A9D3E2258967D00C5C877 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9E9A9D3F2258967D00C5C877 /* Build configuration list for PBXNativeTarget "Calc2UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9E9A9D402258967D00C5C877 /* Debug */,
-				9E9A9D412258967D00C5C877 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
