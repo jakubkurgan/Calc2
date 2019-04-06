@@ -22,7 +22,7 @@ class CalcViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
-        title = "Calc2"
+        title = "projectTitle".localized
     }
 
 }
