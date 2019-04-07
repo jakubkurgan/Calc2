@@ -45,7 +45,7 @@ class CalcViewModel {
 
                             KeyCellData(keyType: .delete),
                             KeyCellData(keyType: .token(Token(operand: 0))),
-                            KeyCellData(keyType: .dot),
+                            KeyCellData(keyType: .token(Token(tokenType: .dot))),
                             KeyCellData(keyType: .evaluate)]
     }
     
@@ -62,8 +62,6 @@ class CalcViewModel {
             cleareAll()
         case .delete:
             deleteLast()
-        case .dot:
-            addDot()
         }
         print(infixExpression)
     }
@@ -80,6 +78,8 @@ class CalcViewModel {
             addOperand(operand, with: previousToken)
         case .Operator(let operatorToken):
             addOperatorToken(operatorToken, with: previousToken)
+        case .dot:
+            addDot(token)
         }
     }
     
@@ -91,6 +91,38 @@ class CalcViewModel {
                 let multiplyToken = Token(operatorType: .multiply)
                 infixExpression.append(multiplyToken)
                 infixExpression.append(token)
+            } else if previousToken.isDot {
+                if infixExpression.indices.contains(infixExpression.count - 2) {
+                    let penultimateToken = infixExpression[infixExpression.count - 2]
+                    if let penultimateOperand = penultimateToken.operand {
+                        // example - token: '(', expression: '5 . ' -> '5.0 ('
+                        
+                        if let newToken = Token(operandDescription: "\(format: penultimateOperand)\(previousToken.description)\(format: 0)") {
+                            infixExpression.removeLast() // remove previousToken dot
+                            infixExpression.removeLast() // remove penultimateToken
+                            infixExpression.append(newToken)
+                            infixExpression.append(token)
+                        } else {
+                            // example - token: '(', expression: '3.4 . ' -> '3.4 * ('
+                            
+                            infixExpression.removeLast() // remove previousToken dot
+                            let multiplyToken = Token(operatorType: .multiply)
+                            infixExpression.append(multiplyToken)
+                            infixExpression.append(token)
+                        }
+                    } else {
+                        // example - token: '(', expression: '+ . ' -> '('
+                        
+                        infixExpression.removeLast()// remove previousToken dot
+                        infixExpression.append(token)
+                    }
+                } else {
+                    // example - token: '(', expression: ' . ' -> '('
+                    
+                    infixExpression.removeLast()// remove previousToken dot
+                    infixExpression.append(token)
+                }
+                
             } else {
                 // example - token: '(', expression: '5 +' -> '5 + (', '( 5 * 5 ) /' -> '( 5 * 5) / ('
                 
@@ -104,10 +136,40 @@ class CalcViewModel {
     }
     
     private func addCloseBracket(_ token: Token, with previousToken: Token?) {
-        if let previousToken = previousToken, !previousToken.isOperator {
+        if let previousToken = previousToken, (previousToken.isOperand || previousToken.isOpenBracket) {
             // example - token: ')', expression: '( 3 + 4 ' -> '( 3 + 4 )'
             
             infixExpression.append(token)
+        } else if let previousToken = previousToken, previousToken.isDot {
+            if infixExpression.indices.contains(infixExpression.count - 2) {
+                let penultimateToken = infixExpression[infixExpression.count - 2]
+                if let penultimateOperand = penultimateToken.operand {
+                    // example - token: ')', expression: '5 . ' -> '5.0 )'
+                    
+                    if let newToken = Token(operandDescription: "\(format: penultimateOperand)\(previousToken.description)\(format: 0)") {
+                        infixExpression.removeLast() // remove previousToken dot
+                        infixExpression.removeLast() // remove penultimateToken
+                        infixExpression.append(newToken)
+                        infixExpression.append(token)
+                    } else {
+                        // example - token: ')', expression: '3.4 . ' -> '3.4 )'
+                        
+                        infixExpression.removeLast() // remove previousToken dot
+                        infixExpression.append(token)
+                    }
+                } else {
+                    // example - token: ')', expression: '+ . ' -> ')'
+                    
+                    infixExpression.removeLast()// remove previousToken dot
+                    infixExpression.append(token)
+                }
+            } else {
+                // example - token: ')', expression: ' . ' -> ''
+                
+                infixExpression.removeLast()// remove previousToken dot
+                infixExpression.append(token)
+            }
+            
         } else if !infixExpression.isEmpty {
             // example - token: ')', expression: '( 3 + 4 *' -> '( 3 + 4 )'
             
@@ -132,6 +194,35 @@ class CalcViewModel {
                 infixExpression.append(multiplyToken)
                 let newToken = Token(operand: operand)
                 infixExpression.append(newToken)
+            } else if previousToken.isDot {
+                if infixExpression.indices.contains(infixExpression.count - 2) {
+                    let penultimateToken = infixExpression[infixExpression.count - 2]
+                    if let penultimateOperand = penultimateToken.operand {
+                        // example - operand: 2, expression: '5 . ' -> '5.2'
+                        
+                        if let newToken = Token(operandDescription: "\(format: penultimateOperand)\(previousToken.description)\(format: operand)") {
+                            infixExpression.removeLast() // remove previousToken dot
+                            infixExpression.removeLast() // remove penultimateToken 2
+                            infixExpression.append(newToken)
+                        } else {
+                            infixExpression.removeLast() // remove previousToken dot
+                        }
+                    } else {
+                        // example - operand: 2, expression: '5 * . ' -> '5 * 0.2'
+                        
+                        if let newToken = Token(operandDescription: "\(format: 0)\(previousToken.description)\(format: operand)") {
+                            infixExpression.removeLast() // remove previousToken
+                            infixExpression.append(newToken)
+                        }
+                    }
+                } else {
+                    // example - operand: 2, expression: '. ' -> '0.2'
+                    
+                    if let newToken = Token(operandDescription: "\(format: 0)\(previousToken.description)\(format: operand)") {
+                        infixExpression.removeLast() // remove previousToken
+                        infixExpression.append(newToken)
+                    }
+                }
             } else {
                 // example - operand: 1, expression: '9 / ' -> '9 / 1', '5 -' -> '5 - 1',  '5 *' -> ' 5 * 1'
                 
@@ -171,6 +262,39 @@ class CalcViewModel {
                 
                 let newToken = Token(operatorType: operatorToken.operatorType)
                 infixExpression.append(newToken)
+            } else if previousToken.isDot {
+                if infixExpression.indices.contains(infixExpression.count - 2) {
+                    let penultimateToken = infixExpression[infixExpression.count - 2]
+                    if let penultimateOperand = penultimateToken.operand {
+                        // example - operatorToken: +, expression: '5 . ' -> '5.0 +'
+                        
+                        if let newToken = Token(operandDescription: "\(format: penultimateOperand)\(previousToken.description)\(format: 0)") {
+                            infixExpression.removeLast() // remove previousToken dot
+                            infixExpression.removeLast() // remove penultimateToken
+                            infixExpression.append(newToken)
+                            let newOperatorToken = Token(operatorType: operatorToken.operatorType)
+                            infixExpression.append(newOperatorToken)
+                        } else {
+                            // example - operatorToken: +, expression: '5.5 . ' -> '5.5 +'
+                            
+                            infixExpression.removeLast() // remove previousToken dot
+                            let newOperatorToken = Token(operatorType: operatorToken.operatorType)
+                            infixExpression.append(newOperatorToken)
+                        }
+                    } else if penultimateToken.isOperator {
+                        // example - operatorToken: + , expression: '5 * . ' -> '5 +'
+                        infixExpression.removeLast() // remove dot
+                        infixExpression.removeLast() // remove old operator
+                        let newOperatorToken = Token(operatorType: operatorToken.operatorType)
+                        infixExpression.append(newOperatorToken)
+                    }
+                } else {
+                    // example - operatorToken: +, expression: ' . ' -> '+'
+                    
+                    infixExpression.removeLast()
+                    let newOperatorToken = Token(operatorType: operatorToken.operatorType)
+                    infixExpression.append(newOperatorToken)
+                }
             }
         } else {
             // example - operatorToken: '*', expression: '' -> '', operatorToken: '-', expression: '' -> '-'
@@ -201,13 +325,13 @@ class CalcViewModel {
             
             var truncatedOperandDescription = lastToken.description
             truncatedOperandDescription.removeLast()
-            if let truncatedOperandToken = Token(truncatedOperandDescription: truncatedOperandDescription) {
+            if let truncatedOperandToken = Token(operandDescription: truncatedOperandDescription) {
                 infixExpression.append(truncatedOperandToken)
             }
         }
     }
     
-    private func addDot() {
-        
+    private func addDot(_ token: Token) {
+        infixExpression.append(token)
     }
 }

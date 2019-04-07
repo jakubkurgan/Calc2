@@ -26,8 +26,6 @@ struct KeyCellData {
             self.keyStyle = KeyStyle(textColor: .white, backgroundColor: .orange)
         case .clear, .delete:
             self.keyStyle = KeyStyle(textColor: .orange, backgroundColor: .white)
-        case .dot:
-            self.keyStyle = KeyStyle(textColor: .gray, backgroundColor: .white)
         }
     }
 }

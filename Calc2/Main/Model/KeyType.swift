@@ -13,7 +13,6 @@ enum KeyType: CustomStringConvertible {
     case evaluate
     case delete
     case clear
-    case dot
     
     var description: String {
         switch self {
@@ -25,8 +24,6 @@ enum KeyType: CustomStringConvertible {
             return "del"
         case .clear:
             return "C"
-        case .dot:
-            return "."
         }
     }
 }

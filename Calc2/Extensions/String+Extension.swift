@@ -17,7 +17,7 @@ extension String {
 extension String.StringInterpolation {
     mutating func appendInterpolation(format value: Double) {
         if value.truncatingRemainder(dividingBy: 1) == 0 {
-            appendLiteral("\(Int(value))")
+            appendLiteral("\(String(format: "%.0f", value))")
         } else {
             appendLiteral("\(value)")
         }

@@ -27,8 +27,8 @@ struct Token: CustomStringConvertible {
         }
     }
     
-    init?(truncatedOperandDescription: String) {
-        if let newOperand = Double("\(truncatedOperandDescription)") {
+    init?(operandDescription: String) {
+        if let newOperand = Double("\(operandDescription)") {
             tokenType = .operand(newOperand)
         } else {
             return nil
@@ -95,6 +95,15 @@ struct Token: CustomStringConvertible {
         }
     }
     
+    var isDot: Bool {
+        switch tokenType {
+        case .dot:
+            return true
+        default:
+            return false
+        }
+    }
+
     var operand: Double? {
         switch tokenType {
         case .operand(let result):

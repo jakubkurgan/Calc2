@@ -13,6 +13,7 @@ enum TokenType: CustomStringConvertible {
     case closeBracket
     case Operator(OperatorToken)
     case operand(Double)
+    case dot
     
     var description: String {
         switch self {
@@ -24,6 +25,8 @@ enum TokenType: CustomStringConvertible {
             return operatorToken.description
         case .operand(let value):
             return "\(format: value)"
+        case .dot:
+            return "."
         }
     }
 }

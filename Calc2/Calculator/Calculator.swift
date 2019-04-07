@@ -49,6 +49,8 @@ class Calculator {
                     }
                 }
                 tokenStack.push(token)
+            case .dot:
+                break
             }
         }
         
