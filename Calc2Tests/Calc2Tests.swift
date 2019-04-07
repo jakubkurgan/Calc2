@@ -19,9 +19,87 @@ class Calc2Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSimpleAddition() {
+        let infixExpression: [Token] = [Token(operand: 20),
+                                        Token(operatorType: .add),
+                                        Token(operand: 2)]
+        
+        let result = Calculator.shared.evaluateExpression(from: infixExpression)
+        
+        XCTAssertEqual(result, 22, "\(infixExpression.description)")
+    }
+    
+    func testEquationOrder() {
+        let infixExpression: [Token] = [Token(operand: 2),
+                                        Token(operatorType: .add),
+                                        Token(operand: 2),
+                                        Token(operatorType: .multiply),
+                                        Token(operand: 2)]
+        
+        let result = Calculator.shared.evaluateExpression(from: infixExpression)
+        
+        XCTAssertEqual(result, 6, "\(infixExpression.description)")
+    }
+    
+    func testtEquationOrderWithParanteses() {
+        let infixExpression: [Token] = [Token(tokenType: .openBracket),
+                                        Token(operand: 2),
+                                        Token(operatorType: .add),
+                                        Token(operand: 2),
+                                        Token(tokenType: .closeBracket),
+                                        Token(operatorType: .multiply),
+                                        Token(operand: 2)]
+        
+        let result = Calculator.shared.evaluateExpression(from: infixExpression)
+        
+        XCTAssertEqual(result, 8, "\(infixExpression.description)")
+    }
+    
+    func testtDecimalAddition() {
+        let infixExpression: [Token] = [Token(operand: 2.2),
+                                        Token(operatorType: .add),
+                                        Token(operand: 9.7),
+                                        Token(operatorType: .add),
+                                        Token(operand: 3.2)]
+        
+        let result = Calculator.shared.evaluateExpression(from: infixExpression)
+        
+        XCTAssertEqual(result, 15.1, accuracy: 0.000000001, "\(infixExpression)")
+    }
+    
+    func testDecimalMultiplying() {
+        let infixExpression: [Token] = [Token(operand: 0.5),
+                                        Token(operatorType: .multiply),
+                                        Token(operand: 2.2),
+                                        Token(operatorType: .multiply),
+                                        Token(operand: 10)]
+        
+        let result = Calculator.shared.evaluateExpression(from: infixExpression)
+        
+        XCTAssertEqual(result, 11, accuracy: 0.000000001, "\(infixExpression)")
+    }
+    
+    func testDivideByZeroReturnInf() {
+        let infixExpression: [Token] = [Token(operand: 0.5),
+                                        Token(operatorType: .multiply),
+                                        Token(operand: 2.2),
+                                        Token(operatorType: .divide),
+                                        Token(operand: 0)]
+        
+        let result = Calculator.shared.evaluateExpression(from: infixExpression)
+        
+        XCTAssert(result.isInfinite, "division by zero return infinite")
+    }
+    
+    func testWrongEquationReturnNan() {
+        let infixExpression: [Token] = [Token(operand: 0.5),
+                                        Token(operatorType: .multiply),
+                                        Token(operand: 2.2),
+                                        Token(operatorType: .divide)]
+        
+        let result = Calculator.shared.evaluateExpression(from: infixExpression)
+        
+        XCTAssert(result.isNaN, "wrong equetion return NaN")
     }
 
     func testPerformanceExample() {
