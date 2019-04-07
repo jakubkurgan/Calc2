@@ -14,6 +14,14 @@ class CalcViewModel {
     
     private(set) var keyboardDataList: [KeyCellData] = []
     private(set) var infixExpression = [Token]()
+    weak var observer: CalcViewControllerObserver?
+    
+    var formattedExpression: String = "" {
+        didSet {
+            observer?.observer(didChange: formattedExpression)
+        }
+    }
+    
     // MARK: - Init
     
     init() {
@@ -56,14 +64,16 @@ class CalcViewModel {
         switch keyType {
         case .token(let token):
             addToken(token: token)
+            formattedExpression = infixExpression.map { $0.description }.joined(separator: " ")
         case .evaluate:
             evaluateExpression()
         case.clear:
             cleareAll()
+            formattedExpression = infixExpression.map { $0.description }.joined(separator: " ")
         case .delete:
             deleteLast()
+            formattedExpression = infixExpression.map { $0.description }.joined(separator: " ")
         }
-        print(infixExpression)
     }
     
     private func addToken(token: Token) {
@@ -310,7 +320,12 @@ class CalcViewModel {
     private func evaluateExpression() {
         let result = Calculator.shared.evaluateExpression(from: infixExpression)
         print(result)
-        infixExpression = []
+        if result.isInfinite || result.isNaN {
+            formattedExpression += "\n = \("wrongEquationErrorMessage".localized)"
+        } else {
+            formattedExpression += "\n = \(result)"
+            infixExpression = [Token(operand: result)]
+        }
     }
     
     private func cleareAll() {
