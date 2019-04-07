@@ -76,12 +76,20 @@ extension CalcViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeyCell.reuseIdentifier, for: indexPath) as? KeyCell {
             
             let data = viewModel.keyboardDataList[indexPath.item]
-            cell.setupTitleLabel(title: data.title)
+            cell.setupTitleLabel(title: data.keyType.description,
+                                 textColor: data.keyStyle.textColor,
+                                 backgroundColor: data.keyStyle.backgroundColor)
             
             return cell
         }
         
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = viewModel.keyboardDataList[indexPath.item]
+        
+        viewModel.keyTapped(with: data.keyType)
     }
 }
 

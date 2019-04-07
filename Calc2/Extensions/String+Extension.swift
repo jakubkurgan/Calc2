@@ -13,3 +13,13 @@ extension String {
         return NSLocalizedString(self, tableName: nil, bundle: .main, value: "", comment: "")
     }
 }
+
+extension String.StringInterpolation {
+    mutating func appendInterpolation(format value: Double) {
+        if value.truncatingRemainder(dividingBy: 1) == 0 {
+            appendLiteral("\(Int(value))")
+        } else {
+            appendLiteral("\(value)")
+        }
+    }
+}

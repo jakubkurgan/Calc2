@@ -9,6 +9,25 @@
 import Foundation
 
 struct KeyCellData {
-    let title: String
-    let actionBlock: (() -> ())?
+    let keyType: KeyType
+    let keyStyle: KeyStyle
+    
+    init(keyType: KeyType) {
+        self.keyType = keyType
+        
+        switch keyType {
+        case .token(let token):
+            if token.isOperand {
+                self.keyStyle = KeyStyle(textColor: .gray, backgroundColor: .white)
+            } else {
+                self.keyStyle = KeyStyle(textColor: .orange, backgroundColor: .white)
+            }
+        case .evaluate:
+            self.keyStyle = KeyStyle(textColor: .white, backgroundColor: .orange)
+        case .clear, .delete:
+            self.keyStyle = KeyStyle(textColor: .orange, backgroundColor: .white)
+        case .dot:
+            self.keyStyle = KeyStyle(textColor: .gray, backgroundColor: .white)
+        }
+    }
 }

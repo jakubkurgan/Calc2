@@ -20,22 +20,9 @@ class KeyCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.backgroundColor = .white
-        label.textColor = .gray
+        label.font = UIFont.boldSystemFont(ofSize: 17)
         return label
     }()
-    
-    override var isHighlighted: Bool {
-        didSet {
-            if isHighlighted {
-                titleLabel.backgroundColor = .orange
-                titleLabel.textColor = .white
-            } else {
-                titleLabel.backgroundColor = .white
-                titleLabel.textColor = .gray
-            }
-        }
-    }
     
     // MARK: - Init
     
@@ -59,7 +46,9 @@ class KeyCell: UICollectionViewCell {
         titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -0.5).isActive = true
     }
     
-    func setupTitleLabel(title: String) {
+    func setupTitleLabel(title: String, textColor: UIColor, backgroundColor: UIColor) {
         titleLabel.text = title
+        titleLabel.textColor = textColor
+        titleLabel.backgroundColor = backgroundColor
     }
 }

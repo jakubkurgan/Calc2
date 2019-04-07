@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		9E0008F02258B39600D9ED4E /* KeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0008EF2258B39600D9ED4E /* KeyCell.swift */; };
+		9E19A4852259592000FE189D /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E19A4842259592000FE189D /* Stack.swift */; };
+		9E19A48722595A7F00FE189D /* OperatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E19A48622595A7F00FE189D /* OperatorType.swift */; };
+		9E19A48922595C1C00FE189D /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E19A48822595C1C00FE189D /* TokenType.swift */; };
+		9E19A48B22595C7200FE189D /* OperatorToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E19A48A22595C7200FE189D /* OperatorToken.swift */; };
+		9E19A48D22595D0C00FE189D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E19A48C22595D0C00FE189D /* Token.swift */; };
+		9E19A48F22595EF300FE189D /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E19A48E22595EF300FE189D /* Calculator.swift */; };
+		9E1C228722597D27001AA557 /* KeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C228622597D27001AA557 /* KeyType.swift */; };
+		9E1C228922597EB6001AA557 /* KeyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C228822597EB6001AA557 /* KeyStyle.swift */; };
 		9E9A9D152258967C00C5C877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9A9D142258967C00C5C877 /* AppDelegate.swift */; };
 		9E9A9D1C2258967D00C5C877 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E9A9D1B2258967D00C5C877 /* Assets.xcassets */; };
 		9E9A9D1F2258967D00C5C877 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9A9D1D2258967D00C5C877 /* LaunchScreen.storyboard */; };
@@ -31,6 +39,14 @@
 
 /* Begin PBXFileReference section */
 		9E0008EF2258B39600D9ED4E /* KeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCell.swift; sourceTree = "<group>"; };
+		9E19A4842259592000FE189D /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		9E19A48622595A7F00FE189D /* OperatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorType.swift; sourceTree = "<group>"; };
+		9E19A48822595C1C00FE189D /* TokenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
+		9E19A48A22595C7200FE189D /* OperatorToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorToken.swift; sourceTree = "<group>"; };
+		9E19A48C22595D0C00FE189D /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		9E19A48E22595EF300FE189D /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		9E1C228622597D27001AA557 /* KeyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyType.swift; sourceTree = "<group>"; };
+		9E1C228822597EB6001AA557 /* KeyStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStyle.swift; sourceTree = "<group>"; };
 		9E9A9D112258967C00C5C877 /* Calc2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calc2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E9A9D142258967C00C5C877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E9A9D1B2258967D00C5C877 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +88,19 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		9E19A483225958D600FE189D /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				9E19A4842259592000FE189D /* Stack.swift */,
+				9E19A48622595A7F00FE189D /* OperatorType.swift */,
+				9E19A48822595C1C00FE189D /* TokenType.swift */,
+				9E19A48A22595C7200FE189D /* OperatorToken.swift */,
+				9E19A48C22595D0C00FE189D /* Token.swift */,
+				9E19A48E22595EF300FE189D /* Calculator.swift */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
 		9E9A9D082258967B00C5C877 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +122,7 @@
 		9E9A9D132258967C00C5C877 /* Calc2 */ = {
 			isa = PBXGroup;
 			children = (
+				9E19A483225958D600FE189D /* Calculator */,
 				9EFA637722589C530020DF41 /* Extensions */,
 				9EFA637022589A680020DF41 /* Main */,
 				9E9A9D142258967C00C5C877 /* AppDelegate.swift */,
@@ -144,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				9ECEFF9B2258ACED006AC901 /* KeyCellData.swift */,
+				9E1C228622597D27001AA557 /* KeyType.swift */,
+				9E1C228822597EB6001AA557 /* KeyStyle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,9 +297,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E19A48922595C1C00FE189D /* TokenType.swift in Sources */,
+				9E1C228922597EB6001AA557 /* KeyStyle.swift in Sources */,
 				9E9A9D152258967C00C5C877 /* AppDelegate.swift in Sources */,
+				9E1C228722597D27001AA557 /* KeyType.swift in Sources */,
+				9E19A48722595A7F00FE189D /* OperatorType.swift in Sources */,
 				9ECEFF9E2258ADB4006AC901 /* CalcViewModel.swift in Sources */,
+				9E19A4852259592000FE189D /* Stack.swift in Sources */,
+				9E19A48F22595EF300FE189D /* Calculator.swift in Sources */,
+				9E19A48B22595C7200FE189D /* OperatorToken.swift in Sources */,
 				9EFA637922589C680020DF41 /* String+Extension.swift in Sources */,
+				9E19A48D22595D0C00FE189D /* Token.swift in Sources */,
 				9E0008F02258B39600D9ED4E /* KeyCell.swift in Sources */,
 				9EFA637622589ACD0020DF41 /* CalcViewController.swift in Sources */,
 				9ECEFF9C2258ACED006AC901 /* KeyCellData.swift in Sources */,
@@ -427,14 +467,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 83R8684L4T;
 				INFOPLIST_FILE = Calc2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jakub.kurgan.calc2.Calc2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -446,14 +486,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 83R8684L4T;
 				INFOPLIST_FILE = Calc2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jakub.kurgan.calc2.Calc2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -473,7 +513,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jakub.kurgan.calc2.Calc2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calc2.app/Calc2";
 			};
@@ -494,7 +534,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jakub.kurgan.calc2.Calc2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calc2.app/Calc2";
 			};
