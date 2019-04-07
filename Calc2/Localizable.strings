@@ -9,3 +9,4 @@
 // Common
 
 "projectTitle" = "Calc2";
+"wrongEquationErrorMessage" = "Wrong equation";

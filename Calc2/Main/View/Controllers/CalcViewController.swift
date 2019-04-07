@@ -12,6 +12,20 @@ class CalcViewController: UIViewController {
     
     // MARK: - UI Components
     
+    lazy var textView: UITextView = {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.textAlignment = .right
+        textView.textContainerInset = UIEdgeInsets(top: (view.frame.height * 2/5) - 20, left: 0, bottom: 20, right: 20)
+        textView.backgroundColor = .black
+        textView.textColor = .white
+        textView.font = UIFont.boldSystemFont(ofSize: 40)
+        textView.isEditable = false
+        textView.setContentOffset(CGPoint(x: 0, y: textView.contentSize.height - textView.bounds.height), animated: false)
+
+        return textView
+    }()
+    
     lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -40,6 +54,7 @@ class CalcViewController: UIViewController {
         super.viewDidLoad()
 
         setupView()
+        viewModel.observer = self
     }
     
     // MARK: - Setup
@@ -47,8 +62,19 @@ class CalcViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .white
         title = "projectTitle".localized
-        
+        navigationController?.navigationBar.barTintColor = .orange
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+
         setupCollectionViewLayout()
+        setupTextViewLayout()
+    }
+    
+    private func setupTextViewLayout() {
+        view.addSubview(textView)
+        textView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        textView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        textView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        textView.bottomAnchor.constraint(equalTo: collectionView.topAnchor).isActive = true
     }
     
     private func setupCollectionViewLayout() {
@@ -102,5 +128,13 @@ extension CalcViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width / 4, height: collectionView.bounds.height / 5)
     }
+}
 
+// MARK: - Observer text didChange
+
+extension CalcViewController: CalcViewControllerObserver {
+    func observer(didChange text: String) {
+        textView.text = text
+        textView.setContentOffset(CGPoint(x: 0, y: textView.contentSize.height - textView.bounds.height), animated: false)
+    }
 }
