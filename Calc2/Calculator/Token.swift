@@ -19,6 +19,22 @@ struct Token: CustomStringConvertible {
         tokenType = .operand(operand)
     }
     
+    init?(oldOperandDescription: String, newOperandDescription: String) {
+        if let newOperand = Double("\(oldOperandDescription)\(newOperandDescription)") {
+            tokenType = .operand(newOperand)
+        } else {
+            return nil
+        }
+    }
+    
+    init?(truncatedOperandDescription: String) {
+        if let newOperand = Double("\(truncatedOperandDescription)") {
+            tokenType = .operand(newOperand)
+        } else {
+            return nil
+        }
+    }
+    
     init(operatorType: OperatorType) {
         tokenType = .Operator(OperatorToken(operatorType: operatorType))
     }
@@ -26,6 +42,15 @@ struct Token: CustomStringConvertible {
     var isOpenBracket: Bool {
         switch tokenType {
         case .openBracket:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    var isCloseBracket: Bool {
+        switch tokenType {
+        case .closeBracket:
             return true
         default:
             return false
@@ -49,6 +74,8 @@ struct Token: CustomStringConvertible {
                 return previousOperand - nextOperand
         }
     }
+    
+    var isUnusedMinus: Bool = false 
     
     var isOperator: Bool {
         switch tokenType {
