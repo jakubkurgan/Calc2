@@ -21,6 +21,7 @@
 		9E9A9D1F2258967D00C5C877 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9A9D1D2258967D00C5C877 /* LaunchScreen.storyboard */; };
 		9E9A9D2A2258967D00C5C877 /* Calc2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9A9D292258967D00C5C877 /* Calc2Tests.swift */; };
 		9EBA2942225A94190058B9AD /* CalcViewControllerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA2941225A94190058B9AD /* CalcViewControllerObserver.swift */; };
+		9EBA2944225AA15E0058B9AD /* InfixExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA2943225AA15E0058B9AD /* InfixExpressionParser.swift */; };
 		9ECEFF9C2258ACED006AC901 /* KeyCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECEFF9B2258ACED006AC901 /* KeyCellData.swift */; };
 		9ECEFF9E2258ADB4006AC901 /* CalcViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECEFF9D2258ADB4006AC901 /* CalcViewModel.swift */; };
 		9EFA637622589ACD0020DF41 /* CalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFA637522589ACD0020DF41 /* CalcViewController.swift */; };
@@ -57,6 +58,7 @@
 		9E9A9D292258967D00C5C877 /* Calc2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calc2Tests.swift; sourceTree = "<group>"; };
 		9E9A9D2B2258967D00C5C877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EBA2941225A94190058B9AD /* CalcViewControllerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcViewControllerObserver.swift; sourceTree = "<group>"; };
+		9EBA2943225AA15E0058B9AD /* InfixExpressionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfixExpressionParser.swift; sourceTree = "<group>"; };
 		9ECEFF9B2258ACED006AC901 /* KeyCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCellData.swift; sourceTree = "<group>"; };
 		9ECEFF9D2258ADB4006AC901 /* CalcViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcViewModel.swift; sourceTree = "<group>"; };
 		9EFA637522589ACD0020DF41 /* CalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				9E19A48A22595C7200FE189D /* OperatorToken.swift */,
 				9E19A48C22595D0C00FE189D /* Token.swift */,
 				9E19A48E22595EF300FE189D /* Calculator.swift */,
+				9EBA2943225AA15E0058B9AD /* InfixExpressionParser.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E19A48922595C1C00FE189D /* TokenType.swift in Sources */,
+				9EBA2944225AA15E0058B9AD /* InfixExpressionParser.swift in Sources */,
 				9E1C228922597EB6001AA557 /* KeyStyle.swift in Sources */,
 				9E9A9D152258967C00C5C877 /* AppDelegate.swift in Sources */,
 				9E1C228722597D27001AA557 /* KeyType.swift in Sources */,
