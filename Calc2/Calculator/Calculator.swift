@@ -15,8 +15,14 @@ class Calculator {
     private init() {
         
     }
+    
+    func evaluateExpression(from infixExpression: [Token]) -> Double {
+        let postfix = generatePostfixNotation(from: infixExpression)
+        let result = evaluatePostfixExpression(postfix)
+        return result
+    }
 
-    func generatePostfixNotation(from infixExpression: [Token]) -> [Token] {
+    private func generatePostfixNotation(from infixExpression: [Token]) -> [Token] {
         
         var tokenStack = Stack<Token>()
         var postfixNotation = [Token]()
@@ -61,7 +67,7 @@ class Calculator {
         return postfixNotation
     }
     
-    func evaluatePostfixExpression(_ expression: [Token]) -> Double {
+    private func evaluatePostfixExpression(_ expression: [Token]) -> Double {
         
         var operandStack = Stack<Double>()
         

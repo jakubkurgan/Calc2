@@ -308,9 +308,7 @@ class CalcViewModel {
     }
     
     private func evaluateExpression() {
-        let postfix = Calculator.shared.generatePostfixNotation(from: infixExpression)
-        let result = Calculator.shared.evaluatePostfixExpression(postfix)
-        print(postfix)
+        let result = Calculator.shared.evaluateExpression(from: infixExpression)
         print(result)
         infixExpression = []
     }
