@@ -16,20 +16,17 @@ struct Token: CustomStringConvertible {
     }
     
     init(operand: Double) {
-        tokenType = .operand(operand)
+        tokenType = .operand(decimal: operand, literal: "\(format: operand)".formattedLiteralDescription)
     }
     
-    init?(oldOperandDescription: String, newOperandDescription: String) {
-        if let newOperand = Double("\(oldOperandDescription)\(newOperandDescription)") {
-            tokenType = .operand(newOperand)
-        } else {
-            return nil
-        }
+    init(decimal: Double, literal: String) {
+        
+        tokenType = .operand(decimal: decimal, literal: literal.formattedLiteralDescription)
     }
     
-    init?(operandDescription: String) {
-        if let newOperand = Double("\(operandDescription)") {
-            tokenType = .operand(newOperand)
+    init?(literal: String) {
+        if let decimal = Double(literal.stringWithoutGroupingSeparator) {
+            tokenType = .operand(decimal: decimal, literal: literal.formattedLiteralDescription)
         } else {
             return nil
         }
@@ -104,10 +101,10 @@ struct Token: CustomStringConvertible {
         }
     }
 
-    var operand: Double? {
+    var operand: (decimal: Double, literal: String)? {
         switch tokenType {
-        case .operand(let result):
-            return result
+        case .operand(let decimal, let literal):
+            return (decimal, literal)
         default:
             return nil
         }

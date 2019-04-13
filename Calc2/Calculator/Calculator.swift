@@ -78,8 +78,8 @@ class Calculator {
                 
                 let newOperand = token.evaluate(previousOperand: previousOperand, nextOperand: nextOperand)
                 operandStack.push(newOperand)
-            } else if let operand = token.operand, !operand.isNaN {
-                operandStack.push(operand)
+            } else if let decimal = token.operand?.decimal, !decimal.isNaN {
+                operandStack.push(decimal)
             }
         }
 
