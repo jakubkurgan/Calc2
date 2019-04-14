@@ -22,7 +22,7 @@ class CalcViewController: UIViewController {
         textView.font = UIFont.boldSystemFont(ofSize: 40)
         textView.isEditable = false
         textView.setContentOffset(CGPoint(x: 0, y: textView.contentSize.height - textView.bounds.height), animated: false)
-
+        textView.accessibilityIdentifier = "resultTextView"
         return textView
     }()
     
@@ -135,6 +135,8 @@ extension CalcViewController: UICollectionViewDelegateFlowLayout {
 extension CalcViewController: CalcViewControllerObserver {
     func observer(didChange text: String) {
         textView.text = text
+        let bottom = NSMakeRange(textView.text.count - 1, 1)
+        textView.scrollRangeToVisible(bottom)
         textView.setContentOffset(CGPoint(x: 0, y: textView.contentSize.height - textView.bounds.height), animated: false)
     }
 }

@@ -24,16 +24,30 @@ class KeyCell: UICollectionViewCell {
         return label
     }()
     
+    lazy var highlightedView: UIView = {
+       let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        return view
+    }()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         setupTitleLabelLayout()
+        setuphighlightedViewLayout()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            highlightedView.isHidden = !isHighlighted
+        }
     }
     
     // MARK: - Setup
@@ -44,6 +58,15 @@ class KeyCell: UICollectionViewCell {
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0.5).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -0.5).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -0.5).isActive = true
+    }
+    
+    private func setuphighlightedViewLayout() {
+        contentView.addSubview(highlightedView)
+        highlightedView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0.5).isActive = true
+        highlightedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0.5).isActive = true
+        highlightedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -0.5).isActive = true
+        highlightedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -0.5).isActive = true
+        highlightedView.isHidden = true 
     }
     
     func setupTitleLabel(title: String, textColor: UIColor, backgroundColor: UIColor) {

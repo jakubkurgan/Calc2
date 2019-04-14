@@ -12,7 +12,7 @@ enum TokenType: CustomStringConvertible {
     case openBracket
     case closeBracket
     case Operator(OperatorToken)
-    case operand(Double)
+    case operand(decimal: Double, literal: String)
     case dot
     
     var description: String {
@@ -23,8 +23,8 @@ enum TokenType: CustomStringConvertible {
             return ")"
         case .Operator(let operatorToken):
             return operatorToken.description
-        case .operand(let value):
-            return "\(format: value)"
+        case .operand(_, let literal):
+            return literal.formattedLiteralDescription
         case .dot:
             return "."
         }
