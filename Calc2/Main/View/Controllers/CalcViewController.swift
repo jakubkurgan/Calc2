@@ -22,7 +22,7 @@ class CalcViewController: UIViewController {
         textView.font = UIFont.boldSystemFont(ofSize: 40)
         textView.isEditable = false
         textView.setContentOffset(CGPoint(x: 0, y: textView.contentSize.height - textView.bounds.height), animated: false)
-
+        textView.accessibilityIdentifier = "resultTextView"
         return textView
     }()
     

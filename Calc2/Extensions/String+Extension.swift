@@ -31,11 +31,11 @@ extension String {
         
         if self.hasDot, components.count == 2,
             let integerLiteral = components.first,
-            let fctionalLiteral = components.last,
+            let fractionalLiteral = components.last,
             let integerValue = Int(integerLiteral),
             let formattedIntegerLiteral = formatter.string(from: NSNumber(value: integerValue)) {
             
-            let formattedLiteral = "\(formattedIntegerLiteral)\(TokenType.dot.description)\(fctionalLiteral)"
+            let formattedLiteral = "\(formattedIntegerLiteral)\(TokenType.dot.description)\(fractionalLiteral)"
             
             return formattedLiteral
         } else {
@@ -57,7 +57,7 @@ extension String.StringInterpolation {
         if value.truncatingRemainder(dividingBy: 1) == 0 {
             appendLiteral("\(String(format: "%.0f", value))")
         } else {
-            appendLiteral("\(value)")
+            appendLiteral("\(String(format: "%.2f", value))")
         }
     }
 }
