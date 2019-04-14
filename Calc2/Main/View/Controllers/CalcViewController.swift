@@ -135,6 +135,8 @@ extension CalcViewController: UICollectionViewDelegateFlowLayout {
 extension CalcViewController: CalcViewControllerObserver {
     func observer(didChange text: String) {
         textView.text = text
+        let bottom = NSMakeRange(textView.text.count - 1, 1)
+        textView.scrollRangeToVisible(bottom)
         textView.setContentOffset(CGPoint(x: 0, y: textView.contentSize.height - textView.bounds.height), animated: false)
     }
 }

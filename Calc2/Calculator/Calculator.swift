@@ -10,16 +10,21 @@ import Foundation
 
 class Calculator {
     
-    static let shared = Calculator()
-    
-    private init() {
-        
-    }
-    
-    func evaluateExpression(from infixExpression: [Token]) -> Double {
-        let postfix = generatePostfixNotation(from: infixExpression)
-        let result = evaluatePostfixExpression(postfix)
-        return result
+    func evaluateExpression(from infixExpression: [Token], completion: @escaping (Result<Token, Error>) -> ()) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            
+            if let postfix = self?.generatePostfixNotation(from: infixExpression),
+                let result = self?.evaluatePostfixExpression(postfix), (!result.isInfinite && !result.isNaN) {
+                
+                DispatchQueue.main.async {
+                    completion(.success(Token(operand: result)))
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completion(.failure(CalculatorError.wrongEquation))
+                }
+            }
+        }
     }
 
     private func generatePostfixNotation(from infixExpression: [Token]) -> [Token] {
@@ -69,6 +74,10 @@ class Calculator {
     
     private func evaluatePostfixExpression(_ expression: [Token]) -> Double {
         
+        if expression.isEmpty {
+            return 0
+        }
+        
         var operandStack = Stack<Double>()
         
         for token in expression {
@@ -78,8 +87,8 @@ class Calculator {
                 
                 let newOperand = token.evaluate(previousOperand: previousOperand, nextOperand: nextOperand)
                 operandStack.push(newOperand)
-            } else if let operand = token.operand, !operand.isNaN {
-                operandStack.push(operand)
+            } else if let decimal = token.operand?.decimal, !decimal.isNaN {
+                operandStack.push(decimal)
             }
         }
 

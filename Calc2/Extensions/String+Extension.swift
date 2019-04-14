@@ -12,6 +12,44 @@ extension String {
     var localized: String {
         return NSLocalizedString(self, tableName: nil, bundle: .main, value: "", comment: "")
     }
+    
+    var hasDot: Bool {
+        return self.contains(TokenType.dot.description)
+    }
+    
+    var formattedLiteralDescription: String  {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        
+        let inputWithoutGroupingSeparator = self.stringWithoutGroupingSeparator
+        
+        guard let decimalNumber = Double(inputWithoutGroupingSeparator) else {
+            return ""
+        }
+        
+        let components = inputWithoutGroupingSeparator.components(separatedBy: TokenType.dot.description)
+        
+        if self.hasDot, components.count == 2,
+            let integerLiteral = components.first,
+            let fctionalLiteral = components.last,
+            let integerValue = Int(integerLiteral),
+            let formattedIntegerLiteral = formatter.string(from: NSNumber(value: integerValue)) {
+            
+            let formattedLiteral = "\(formattedIntegerLiteral)\(TokenType.dot.description)\(fctionalLiteral)"
+            
+            return formattedLiteral
+        } else {
+            return formatter.string(from: NSNumber(value: decimalNumber)) ?? ""
+        }
+    }
+    
+    var stringWithoutGroupingSeparator: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        
+        return self.filter { String($0) != formatter.groupingSeparator }
+    }
+    
 }
 
 extension String.StringInterpolation {
