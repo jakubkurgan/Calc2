@@ -15,6 +15,7 @@ class CalcViewModel {
     private(set) var keyboardDataList: [KeyCellData] = []
     private(set) var infixExpression = [Token]()
     private let infixExpressionParser = InfixExpressionParser()
+    private let calculator = Calculator()
     
     weak var observer: CalcViewControllerObserver?
     
@@ -79,14 +80,20 @@ class CalcViewModel {
     }
 
     private func evaluateExpression() {
-        let result = Calculator.shared.evaluateExpression(from: infixExpression)
-        print(result)
-        if result.isInfinite || result.isNaN {
-            formattedExpression += "\n = \("wrongEquationErrorMessage".localized)"
-        } else {
-            let resultToken = Token(operand: result)
-            formattedExpression += "\n = \(resultToken.description)"
-            infixExpression = [resultToken]
+        if let lastToken = infixExpression.last, lastToken.isOperator {
+            infixExpression.removeLast()
+        }
+        
+        calculator.evaluateExpression(from: infixExpression) { [weak self] (result) in
+            switch result {
+            case .success(let token):
+                
+                self?.formattedExpression += "\n = \(token.description)"
+                self?.infixExpression = [token]
+            case .failure(let error):
+                
+                self?.formattedExpression += "\n = \(error.localizedDescription)"
+            }
         }
     }
 
